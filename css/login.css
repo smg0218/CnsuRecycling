@@ -1,0 +1,9 @@
+@import url(/css/bootstrap.min.css);
+
+.home-logo{
+    padding: 0 20px;
+}
+
+.web-login{
+    width: 50%;
+}
