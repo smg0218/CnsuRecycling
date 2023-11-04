@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
-    <link rel="stylesheet" href="/css/Common.css">
-    <link rel="stylesheet" href="/css/top-menu.css">
+    <link rel="stylesheet" href="/src/main/css.css">
+    <link rel="stylesheet" href="/src/main/cssnu.css">
 
     <title>jsp study</title>
 </head>

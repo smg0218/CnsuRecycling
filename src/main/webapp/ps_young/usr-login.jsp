@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
-    <link rel="stylesheet" href="/css/Common.css">
+    <link rel="stylesheet" href="/src/main/css.css">
 
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/src/main/csscss">
 
     <title>jsp study</title>
 </head>
 <body class="p-3 m-0 border-0 bd-example m-0 border-0">
 
 <div class="dropdown-menu web-login">
-    <a href="top-menu.html" class="home-logo">충남도립대학교</a>
+    <a href="top-menu.jsp" class="home-logo">충남도립대학교</a>
 
     <form class="px-4 py-3">
         <div class="mb-3">
