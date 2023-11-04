@@ -9,9 +9,12 @@
 .wrap .main {
     width: 100%;
     height: 1290px;
+    display: flex;
+    justify-content: center;
 }
 
 .wrap .main .main-1 {
+    margin-top: 200px;
     width: 80%;
     height: 80%;
     background: #fff;
