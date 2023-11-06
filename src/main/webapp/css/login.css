@@ -1,9 +1,24 @@
-@import url(/src/main/webapp/css/bootstrap.min.css);
 
-.home-logo{
-    padding: 0 20px;
+
+
+@import "Common.css";
+
+.fullScreen{
+    background: #f3f3f3;
+
+    height: 100vh;
+
+    display: flex; justify-content: center;
 }
 
-.web-login{
-    width: 50%;
+.fullScreen .web-login{
+    width: 30%;
+    padding: 16px 0px; margin: 1rem 0;
+}
+
+.cnsu-logo{
+    background: url("https://i.namu.wiki/i/8-appfHuJ_E2TrT83RDobLOh7O0dhLeFVvsC-1C_i9-mcycmpnFkDw_LBp-u5PsLO4G-n9NezdM1aDIB-e2YgQ.svg") no-repeat center/contain;
+
+    width: 15vw; height: 10vh;
+    margin: auto;
 }
