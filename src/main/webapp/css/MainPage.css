@@ -19,7 +19,7 @@
 .wrap .main .main-1 {
     margin-top: 200px;
     padding: 10px;
-    width: 70%;
+    width: 80%;
     height: 75%;
     background: #fff;
     border-radius: 20px 20px;
@@ -36,7 +36,7 @@
 
 .wrap .main .main-1 .pro .leftpro {
     background: #FFE5C2;
-    width: 55%;
+    width: 60%;
     height: 90%;
 
 }
@@ -54,21 +54,20 @@
     width: 100%;
     height: 60%;
     display: flex;
-    justify-content: space-evenly;
-    padding-top: 2.5%;
+    justify-content: space-between;
 }
 
 .wrap .main .main-1 .pro .leftpro .column .program .calender {
     background: #fff;
-    width: 65%;
-    height: 95%;
+    width: 67%;
+    height: 100%;
 
 }
 
 .wrap .main .main-1 .pro .leftpro .column .program .schedule {
     background: #fff;
-    width: 30%;
-    height: 95%;
+    width: 32%;
+    height: 100%;
 }
 
 .wrap .main .main-1 .pro .leftpro .bus-schedule {
@@ -93,8 +92,8 @@
 }
 
 .wrap .main .main-1 .pro .rightpro {
-    background: #ccc;
-    width: 30%;
+    background: #FFE5C2;
+    width: 33%;
     height: 90%;
     display: flex;
     justify-content: space-around;
