@@ -8,12 +8,12 @@
 
     height: 100vh;
 
-    display: flex; justify-content: center;
+    /*display: flex; justify-content: center;*/
 }
 
 .fullScreen .web-login{
     width: 30%;
-    padding: 16px 0px; margin: 1rem 0;
+    padding: 16px 0px; margin: 3rem auto;
 }
 
 .cnsu-logo{
