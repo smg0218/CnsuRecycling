@@ -3,6 +3,9 @@
     linear-gradient(336deg, rgba(0,183,0,.3), rgba(185,90,255,0.3) 50%),
     linear-gradient(127deg, rgba(255,94,0,.3), rgba(92,209,229,0.3) 50%);
 }
+.img {
+    background-size: contain;
+}
 
 /* main */
 
@@ -49,7 +52,7 @@
 .wrap .main .main-1 .pro .leftpro .column .program {
     background: #ccc;
     width: 100%;
-    height: 53%;
+    height: 60%;
     display: flex;
     justify-content: space-evenly;
     padding-top: 2.5%;
@@ -68,10 +71,25 @@
     height: 95%;
 }
 
-.wrap .main .main-1 .pro .leftpro .college-meal {
-    background: #ccc;
+.wrap .main .main-1 .pro .leftpro .bus-schedule {
+    /*background: #ccc;*/
     width: 100%;
-    height: 37%;
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+.wrap .main .main-1 .pro .leftpro .bus-schedule .bus-am {
+    width: 49%;
+    height: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.wrap .main .main-1 .pro .leftpro .bus-schedule .bus-pm {
+    width: 49%;
+    height: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 .wrap .main .main-1 .pro .rightpro {
@@ -123,10 +141,16 @@
 }
 
 
-.wrap .main .main-1 .pro .rightpro .right-column .bus-schedule {
+.wrap .main .main-1 .pro .rightpro .right-column .college-meal {
     background: #fff;
     width: 100%;
     height: 60%;
+}
+.wrap .main .main-1 .pro .rightpro .right-column .college-meal .food {
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 
