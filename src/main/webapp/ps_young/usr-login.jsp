@@ -57,7 +57,7 @@
     <div class="dropdown-menu web-login">
         <div class="login-child">
             <div class="cnsu-logo"></div>
-            <form action="loginProcess" class="px-4 py-3">
+            <form method="post" action="loginPro" class="px-4 py-3">
                 <div class="mb-3">
                     <label for="exampleDropdownFormEmail1" class="form-label">아이디</label>
                     <input type="text" class="form-control" id="exampleDropdownFormEmail1" name="id">
