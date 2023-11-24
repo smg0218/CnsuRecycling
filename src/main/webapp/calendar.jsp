@@ -155,15 +155,11 @@
             var selectedYear = document.getElementsByName("year")[0].value;
             var selectedMonth = document.getElementsByName("month")[0].value;
 
-            var selectDate = selectedYear + selectedMonth + selectedDate;
-            console.log(selectDate);
+            var selectDate = selectedYear + "-" + selectedMonth + "-" + selectedDate;
 
             // JSP 코드를 직접 실행하고 데이터를 렌더링
-            var selectedMemoList = [
-
-                <% for (Memo memo : memoList) {
-
-                    //if (memo.getDate().equals(selectDate))%>
+            var MemoList = [
+                <% for (Memo memo : memoList) { %>
                 { date: '<%= memo.getDate() %>', memo: '<%= memo.getMemo() %>' },
                 <%
                 } %>
@@ -177,16 +173,20 @@
 
             // 새로운 메모를 추가
             var hasMemo = false;
-            for (var i = 0; i < selectedMemoList.length; i++) {
-                var memoItem = document.createElement("li");
-                memoItem.textContent = selectedMemoList[i].memo;
-                memoListElement.appendChild(memoItem);
-                hasMemo = true;
+            var datenumber = 0;
+                for (var x of MemoList) {
+                    if (x.date === selectDate) {
+                        var memoItem = document.createElement("p");
+                        memoItem.textContent = MemoList[datenumber].memo;
+                        memoListElement.appendChild(memoItem);
+                        hasMemo = true;
+                    }
+                    datenumber++;
             }
 
             // 만약 메모가 없을 경우
             if (!hasMemo) {
-                var noMemoItem = document.createElement("li");
+                var noMemoItem = document.createElement("p");
                 noMemoItem.textContent = "";
                 memoListElement.appendChild(noMemoItem);
             }
@@ -267,17 +267,9 @@
 
     <div class="schedule">
         <h2>메모</h2>
-        <ul id="memoList">
+        <div id="memoList">
             <!-- 메모 내용이 들어올 부분-->
-            <!--
-<%--            <c:forEach var="memo" items="${memoList}">--%>
-                <c:set var="nowDate" value="<%= nowDate %>"></c:set>
-<%--                <c:if test="${memo.memo eq nowDate}">--%>
-<%--                    <li>${memo.memo}</li>--%>
-<%--                </c:if>--%>
-<%--            </c:forEach>--%>
-            -->
-        </ul>
+        </div>
     </div>
 
 </div>

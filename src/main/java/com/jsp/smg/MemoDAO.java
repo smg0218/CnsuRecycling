@@ -13,7 +13,7 @@ public class MemoDAO {
 
     public static List<Memo> allMemoList() {
         List<Memo> memoList = new ArrayList<>();
-        String sql = "select * from calendarmemo where userid='201916011'";
+        String sql = "select * from calendarmemo where user_id='201916011'";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)){
             ResultSet rs = stmt.executeQuery();
