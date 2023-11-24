@@ -30,6 +30,27 @@ public class MemoDAO {
         return memoList;
     }
 
+    public static List<Memo> getMemoList(String date) {
+        List<Memo> memoList = new ArrayList<>();
+        String sql = "select memo from calendarmemo where memo_date = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)){
+            stmt.setString(1, date); // 학번
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Memo memo = new Memo();
+                memo.setDate(rs.getString("memo_date"));
+                memo.setMemo(rs.getString("memo"));
+                memoList.add(memo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return memoList;
+    }
+
     public static void addMemo(Memo memo) {
         String sql = "INSERT INTO calendarmemo (id, userid, memo_date, memo) VALUES (null, ?, ?, ?)";
 
