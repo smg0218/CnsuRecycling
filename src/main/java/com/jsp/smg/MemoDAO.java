@@ -11,9 +11,10 @@ import java.util.List;
 public class MemoDAO {
     private static Connection conn = DBUtils.getConnection();
 
+    //모든 메모를 가져오는 부분
     public static List<Memo> allMemoList() {
         List<Memo> memoList = new ArrayList<>();
-        String sql = "select * from calendarmemo where user_id='201916011'";
+        String sql = "select * from calendarmemo";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)){
             ResultSet rs = stmt.executeQuery();
@@ -30,6 +31,7 @@ public class MemoDAO {
         return memoList;
     }
 
+    //추후에 학번에 맞는 메모만 가져오는 부분
     public static List<Memo> getMemoList(String date) {
         List<Memo> memoList = new ArrayList<>();
         String sql = "select memo from calendarmemo where memo_date = ?";
@@ -51,6 +53,7 @@ public class MemoDAO {
         return memoList;
     }
 
+    // 메모를 추가하는 부분
     public static void addMemo(Memo memo) {
         String sql = "INSERT INTO calendarmemo (id, userid, memo_date, memo) VALUES (null, ?, ?, ?)";
 
@@ -64,6 +67,7 @@ public class MemoDAO {
         }
     }
 
+    //메모를 삭제하는 부분
     public static void removeMemo(String date) {
         String sql = "delete from calendarmemo where memo_date = ?";
 

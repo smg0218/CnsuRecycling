@@ -142,6 +142,7 @@
             f.submit();
         }
 
+        //마우스 클릭 이벤트
         function MouseClickEvent(obj) {
             if(pos)
                 pos.style.background = "";
@@ -150,15 +151,26 @@
                 pos.style.background = "rgb(230,255,255)";
             pos = obj;
 
+            //  gray class 태그가 붙었는지 확인
+            const grayCheck = obj.classList.contains('gray');
+
             // 선택한 날짜의 메모를 서버에서 가져와서 표시
-            var selectedDate = obj.innerText;
             var selectedYear = document.getElementsByName("year")[0].value;
-            var selectedMonth = document.getElementsByName("month")[0].value;
+            let selectedMonth = document.getElementsByName("month")[0].value;
+            if(grayCheck) {
+                if(Number(obj.innerText) > 20)
+                    selectedMonth = Number(document.getElementsByName("month")[0].value) - 1;
+                else if(Number(obj.innerText) < 10)
+                    selectedMonth = Number(document.getElementsByName("month")[0].value) + 1;
+            }
+            let selectedDate = obj.innerText;
+
+            if(selectedDate < 10) selectedDate = "0" + obj.innerText;
 
             var selectDate = selectedYear + "-" + selectedMonth + "-" + selectedDate;
 
-            // JSP 코드를 직접 실행하고 데이터를 렌더링
-            var MemoList = [
+            // 날짜와 메모를 가져오는 부분
+            const MemoList = [
                 <% for (Memo memo : memoList) { %>
                 { date: '<%= memo.getDate() %>', memo: '<%= memo.getMemo() %>' },
                 <%
@@ -173,22 +185,15 @@
 
             // 새로운 메모를 추가
             var hasMemo = false;
-            var datenumber = 0;
+            let dateNumber = 0;
                 for (var x of MemoList) {
                     if (x.date === selectDate) {
-                        var memoItem = document.createElement("p");
-                        memoItem.textContent = MemoList[datenumber].memo;
+                        let memoItem = document.createElement("p");
+                        memoItem.textContent = MemoList[dateNumber].memo;
                         memoListElement.appendChild(memoItem);
                         hasMemo = true;
                     }
-                    datenumber++;
-            }
-
-            // 만약 메모가 없을 경우
-            if (!hasMemo) {
-                var noMemoItem = document.createElement("p");
-                noMemoItem.textContent = "";
-                memoListElement.appendChild(noMemoItem);
+                    dateNumber++;
             }
         }
     </script>
@@ -209,6 +214,8 @@
                 <option value="<%=i%>" <%=month==i?"selected='selected'":"" %>><%=i%>월</option>
                 <%} %>
             </select>
+            <button class="add-Btn" name="addButtn" onclick="">메모추가</button>
+            <button class="delete-Btn" name="deleteButten" onclick="">메모삭제</button>
         </form>
     </div>
 
