@@ -1,7 +1,5 @@
 .wrap {
-    background: linear-gradient(217deg, rgba(73,72,225,.3), rgba(255,187,0,0.3) 50%),
-    linear-gradient(336deg, rgba(0,183,0,.3), rgba(185,90,255,0.3) 50%),
-    linear-gradient(127deg, rgba(255,94,0,.3), rgba(92,209,229,0.3) 50%);
+    background: #f3f3f3;
 }
 .img {
     background-size: contain;
@@ -23,6 +21,7 @@
     height: 75%;
     background: #fff;
     border-radius: 20px 20px;
+    box-shadow: 3px 3px 5px 5px rgba(0,0,0,0.3);
 }
 .wrap .main .main-1 .pro
 {
