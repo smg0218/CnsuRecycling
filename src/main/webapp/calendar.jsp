@@ -1,4 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.Calendar"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.jsp.smg.MemoDAO" %>
+<%@ page import="com.jsp.smg.Memo" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%
@@ -30,6 +34,12 @@
     month = cal.get(Calendar.MONTH)+1;
 
     int week = cal.get(Calendar.DAY_OF_WEEK); // 1(일)~7(토)
+
+    String nowDate = Integer.toString(ty) + Integer.toString(tm) + Integer.toString(td);
+
+    // MemoDAO를 사용하여 데이터베이스에서 memoList를 가져옴
+    List<Memo> memoList = MemoDAO.allMemoList();
+    request.setAttribute("memoList", memoList);
 %>
 <!DOCTYPE html>
 <html>
@@ -139,6 +149,9 @@
             if (pos.className === "today")
                 pos.style.background = "rgb(230,255,255)";
             pos = obj;
+
+
+
         }
     </script>
 
@@ -212,6 +225,19 @@
 
     <div class="nowDay">
         <a href="calendar.jsp">오늘날짜로</a>
+    </div>
+
+    <div class="schedule">
+        <h2>메모</h2>
+        <ul id="memoList">
+            <!-- 메모 내용이 들어올 부분-->
+            <c:forEach var="memo" items="${memoList}">
+                <c:set var="nowDate" value="<%= nowDate %>"></c:set>
+                <c:if test="${memo.memo eq nowDate}">
+                    <li>${memo.memo}</li>
+                </c:if>
+            </c:forEach>
+        </ul>
     </div>
 
 </div>
