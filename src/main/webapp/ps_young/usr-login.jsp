@@ -57,14 +57,14 @@
     <div class="dropdown-menu web-login">
         <div class="login-child">
             <div class="cnsu-logo"></div>
-            <form class="px-4 py-3">
+            <form action="loginProcess" class="px-4 py-3">
                 <div class="mb-3">
                     <label for="exampleDropdownFormEmail1" class="form-label">아이디</label>
-                    <input type="text" class="form-control" id="exampleDropdownFormEmail1">
+                    <input type="text" class="form-control" id="exampleDropdownFormEmail1" name="id">
                 </div>
                 <div class="mb-3">
                     <label for="exampleDropdownFormPassword1" class="form-label">패스워드</label>
-                    <input type="password" class="form-control" id="exampleDropdownFormPassword1" >
+                    <input type="password" class="form-control" id="exampleDropdownFormPassword1" name="password" >
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
