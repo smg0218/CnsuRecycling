@@ -201,6 +201,10 @@
             }
         }
 
+        function resetAll() {
+
+        }
+
     </script>
 
 </head>
@@ -259,7 +263,6 @@
                 nowDate = nowDate + "0" + preDate;
             else
                 nowDate = nowDate + preDate;
-            System.out.println("nowDate = " + nowDate);
 
             boolean sleepoverCheck = false;
 
@@ -285,7 +288,7 @@
                 else
                     sbNowDate.replace(8,10, Integer.toString(i));
                 nowDate = String.valueOf(sbNowDate);
-//                System.out.println("nowDate = " + nowDate);
+                System.out.println("nowDate = " + nowDate);
                 if(startDate.equals(nowDate))
                     sleepoverCheck = true;
 
@@ -314,7 +317,7 @@
     </table>
 
     <div class="nowDay">
-        <a href="calendar.jsp">오늘날짜로</a>
+        <a href="calendar.jsp" onclick="resetAll()">오늘날짜로</a>
     </div>
 
     <div class="schedule">
