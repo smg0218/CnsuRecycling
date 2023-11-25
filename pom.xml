@@ -58,6 +58,14 @@
             <version>1.2</version>
         </dependency>
 
+
+        <!-- MySQL JDBC 드라이버 의존성 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.23</version> <!-- 현재 최신 버전에 맞게 업데이트하세요 -->
+        </dependency>
+
     </dependencies>
 
     <build>
