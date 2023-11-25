@@ -21,6 +21,7 @@ public final class usr_002dlogin_jsp extends org.apache.jasper.runtime.HttpJspBa
 
   private static java.util.Map<java.lang.String,java.lang.Long> _jspx_dependants;
 
+  }
   private static final java.util.Set<java.lang.String> _jspx_imports_packages;
 
   private static final java.util.Set<java.lang.String> _jspx_imports_classes;

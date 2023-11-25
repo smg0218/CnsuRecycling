@@ -86,6 +86,12 @@
             <version>8.0.23</version> <!-- 현재 최신 버전에 맞게 업데이트하세요 -->
         </dependency>
 
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.23</version>
+        </dependency>
+
     </dependencies>
 
     <build>
