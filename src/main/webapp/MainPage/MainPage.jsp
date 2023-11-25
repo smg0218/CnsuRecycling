@@ -60,7 +60,7 @@
                         <div class="logoutpro">
                             <div class="logout-column">
                                 <a class="welcome"><%=loginInfo%></a>
-                                <a class="logout-button" href="#" ><%=isLogin%></a>
+                                <a class="logout-button" href="logout" ><%=isLogin%></a>
                             </div>
                         </div>
                         <div class="college-meal">
