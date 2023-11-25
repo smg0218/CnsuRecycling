@@ -13,45 +13,51 @@
     <link href="../css/Common.css">
 
     <style>
+        textarea {
+            width: 100%;
+            height: 6.25em;
+            border: none;
+            resize: none;
+        }
 
         .fullScreen{
             background: #f3f3f3;
-
             height: 100vh;
+
         }
 
         .fullScreen .web-so{
-            width: 30%;
-
-            margin: 3.5rem auto;
+            width: 25%;
+            margin: 9rem auto;
             padding: 0;
 
         }
 
-        .fullScreen .web-login .so-register{
-            margin: 3.6rem auto;
-
+        .fullScreen .web-so .so-register{
             display: flex;
             flex-flow: row wrap; justify-content: center;
         }
 
-        .fullScreen .web-login .login-child .px-4{
+        .fullScreen .web-so .so-register .px-4{
             width: 80%;
             margin: 2.5rem 0;
 
         }
+        .fullScreen .web-so .so-register .px-4 .mb-3 {
+            padding-bottom: 5%;
+        }
 
-        .fullScreen .web-login .login-child .px-4 .mb-3:last-child{
+        .fullScreen .web-so .so-register .px-4 .mb-3:last-child{
             display: flex; flex-flow: row wrap;
             justify-content: center;
         }
 
-        .fullScreen .web-login .login-child .cnsu-logo{
-            background: url("https://i.namu.wiki/i/8-appfHuJ_E2TrT83RDobLOh7O0dhLeFVvsC-1C_i9-mcycmpnFkDw_LBp-u5PsLO4G-n9NezdM1aDIB-e2YgQ.svg") no-repeat center/contain;
+        /*.fullScreen .web-so .so-register .cnsu-logo{*/
+        /*    background: url("https://i.namu.wiki/i/8-appfHuJ_E2TrT83RDobLOh7O0dhLeFVvsC-1C_i9-mcycmpnFkDw_LBp-u5PsLO4G-n9NezdM1aDIB-e2YgQ.svg") no-repeat center/contain;*/
 
-            width: 15vw; height: 10vh;
-            margin: auto;
-        }
+        /*    width: 15vw; height: 10vh;*/
+        /*    margin: auto;*/
+        /*}*/
 
     </style>
 
@@ -61,26 +67,20 @@
 <div class="fullScreen p-3 m-0 border-0 bd-example m-0 border-0">
     <div class="dropdown-menu web-so">
         <div class="so-register">
-            <div class="cnsu-logo"></div>
             <form method="post" action="#" class="px-4 py-3">
                 <div class="mb-3">
-                    <label for="exampleDropdownFormEmail1" class="form-label">아이디</label>
-                    <input type="text" class="form-control" id="exampleDropdownFormEmail1" name="id">
+                    <label for="start-so" class="form-label">외박시작일</label>
+                    <input type="date" class="form-control" id="start-so" name="so-start">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleDropdownFormPassword1" class="form-label">패스워드</label>
-                    <input type="password" class="form-control" id="exampleDropdownFormPassword1" name="password" >
+                    <label for="end-so" class="form-label">외박종료일</label>
+                    <input type="date" class="form-control" id="end-so" name="so-end" >
                 </div>
                 <div class="mb-3">
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                        <label class="form-check-label" for="dropdownCheck">
-                            로그인 정보 기억하기
-                        </label>
-                    </div>
+                    <label for="reason-so" class="form-label">외박사유</label>
+                    <textarea type="text" class="form-control" id="reason-so" name="so-reason"></textarea>
                 </div>
-<%--                href="../MainPage/MainPage.jsp"--%>
-                <input type="submit"  value="로그인" class="btn btn-primary"></input>
+                <input type="submit"  value="신청" class="btn btn-primary">
             </form>
         </div>
     </div>
