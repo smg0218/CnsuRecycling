@@ -1,6 +1,17 @@
+<<<<<<< HEAD
 package src.main.java.com.jsp;
 
 
+=======
+package com.jsp;
+
+import org.apache.catalina.LifecycleException;
+import org.apache.catalina.WebResourceRoot;
+import org.apache.catalina.core.StandardContext;
+import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.webresources.DirResourceSet;
+import org.apache.catalina.webresources.StandardRoot;
+>>>>>>> ps_Young
 
 import java.io.File;
 
@@ -34,4 +45,8 @@ public class JspStarterMain {
         tomcat.start();
         tomcat.getServer().await();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ps_Young
