@@ -5,6 +5,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import static db.DBConnect.select;
 
@@ -27,11 +29,12 @@ public class login extends HttpServlet {
 
         String id=request.getParameter("id");
         String password = request.getParameter("password");
-        String name = select(id, password);
-        if (name==null){
+        Map<String, Object> userInfo = select(id, password);
+        if (userInfo.get("name")==null){
 
         }else{
-            request.getSession().setAttribute("name",name);
+            request.getSession().setAttribute("name",userInfo.get("name"));
+            System.out.println("userInfo = " + userInfo.get("name"));
 
 
 
@@ -43,8 +46,8 @@ public class login extends HttpServlet {
 
 
 
-//            PrintWriter out = response.getWriter();
-//            out.print(name);
+            PrintWriter out = response.getWriter();
+            out.print(userInfo.get("name"));
         }
 
     }

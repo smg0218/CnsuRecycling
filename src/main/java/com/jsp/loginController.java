@@ -6,6 +6,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.Map;
 
 import static db.DBConnect.select;
 
@@ -26,12 +27,7 @@ public class loginController extends HttpServlet {
 
         String id=request.getParameter("id");
         String password = request.getParameter("password");
-        String name = select(id, password);
-        if (name==null){
-
-        }else{
-            request.getSession().setAttribute("name",name);
-        }
+        Map<String, Object> select = select(id, password);
 
 
     }

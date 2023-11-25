@@ -1,6 +1,8 @@
 package db;
 
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DBConnect {
 
@@ -43,10 +45,11 @@ public class DBConnect {
         } catch (SQLException e) {}
     }
 
-    public static String select(String id,String pw){
+    public static Map<String, Object> select(String id, String pw){
         PreparedStatement ps=null;
         ResultSet rs=null;
-        String sql="select name, password from hackathon.user where id=?";
+        String sql="select name, password, room_Number from hackathon.user where id=?";
+        Map<String,Object> info= new HashMap();
 
         try {
             con = DriverManager.getConnection("jdbc:mysql://" + server + ":3306/" + "?useSSL=false", user_name, password);
@@ -54,7 +57,11 @@ public class DBConnect {
             ps.setString(1,id);
             rs=ps.executeQuery();
             if(rs.next()){
-                return rs.getString("name");
+                info.put("name",rs.getString(1));
+                info.put("password",rs.getString(2));
+                info.put("room_Number",rs.getString(3));
+                return info;
+
             }else{
                 return null;
             }

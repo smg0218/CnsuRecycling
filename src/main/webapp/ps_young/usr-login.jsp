@@ -79,7 +79,8 @@
                         </label>
                     </div>
                 </div>
-                <a class="btn btn-primary" href="../MainPage/MainPage.jsp">로그인</a>
+<%--                href="../MainPage/MainPage.jsp"--%>
+                <input type="submit"  value="로그인" class="btn btn-primary"></input>
             </form>
         </div>
     </div>
