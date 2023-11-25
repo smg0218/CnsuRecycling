@@ -15,7 +15,7 @@
 
             color: #fff;
 
-            padding: 30px;
+            padding: 10px;
 
             position: fixed; top: 0;
 
@@ -25,7 +25,7 @@
 
         #top_menuBar .home-logo{
 
-            width: 15vw; height: 10vh;
+            width: 10vw; height: 5vh;
 
             background: url("https://i.namu.wiki/i/8-appfHuJ_E2TrT83RDobLOh7O0dhLeFVvsC-1C_i9-mcycmpnFkDw_LBp-u5PsLO4G-n9NezdM1aDIB-e2YgQ.svg") no-repeat center/contain;
         }

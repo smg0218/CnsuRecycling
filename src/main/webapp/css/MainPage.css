@@ -101,7 +101,7 @@
     width: 33%;
     height: 90%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     border-radius: 10px;
 }
 .wrap .main .main-1 .pro .rightpro .right-column {
@@ -110,7 +110,7 @@
     height: 95%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding-top: 4%;
 }
 .wrap .main .main-1 .pro .rightpro .right-column .logoutpro {
