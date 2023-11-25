@@ -200,6 +200,7 @@
                 dateNumber++;
             }
         }
+
     </script>
 
 </head>
@@ -241,14 +242,30 @@
             Calendar preCal = (Calendar)cal.clone();
             preCal.add(Calendar.DATE, -(week-1));
             int preDate = preCal.get(Calendar.DATE);
+            String nowDate = "";
+
+            if (sy == null)
+                sy = String.valueOf(cal.get(Calendar.YEAR));
+            if (sm == null)
+                sm = String.valueOf(cal.get(Calendar.MONTH));
 
             // 날짜 형식 전환
-            String nowDate = preCal.get(Calendar.YEAR) + "-" + (preCal.get(Calendar.MONTH)+2) + "-" + preDate;
+            if(tm < 10)
+                nowDate = String.valueOf(sy) + "-0" + String.valueOf(sm) + "-";
+            else
+                nowDate = String.valueOf(sy) + "-" + String.valueOf(sm) + "-";
+
+            if(preDate < 10)
+                nowDate = nowDate + "0" + preDate;
+            else
+                nowDate = nowDate + preDate;
+            System.out.println("nowDate = " + nowDate);
+
             boolean sleepoverCheck = false;
 
             // 외박 날짜를 가져오는 부분
-            String startDate = "2023-11-01";
-            String endDate = "2023-11-13";
+            String startDate = "2023-10-01";
+            String endDate = "2023-10-13";
 
             out.print("<tr>");
             // 1일 앞 부분
@@ -268,7 +285,7 @@
                 else
                     sbNowDate.replace(8,10, Integer.toString(i));
                 nowDate = String.valueOf(sbNowDate);
-                System.out.println("nowDate = " + nowDate);
+//                System.out.println("nowDate = " + nowDate);
                 if(startDate.equals(nowDate))
                     sleepoverCheck = true;
 
