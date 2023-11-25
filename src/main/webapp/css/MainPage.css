@@ -1,4 +1,10 @@
+<<<<<<< Updated upstream
 @import url('./Common.css');
+=======
+
+@import "Common.css";
+
+>>>>>>> Stashed changes
 .wrap {
     background: #f3f3f3;
     font-family: 'Cafe24Dangdanghae';
@@ -151,6 +157,19 @@
     height: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat;
+}
+
+/* 로그아웃 버튼 */
+.wrap .main .main-1 .pro .rightpro .right-column .logoutpro .logout-column .logout-button{
+    padding: 0.5rem;
+    background: #0d6efd; border: 1px solid #0d6efd;
+    color: #fff;
+    border-radius: 30px;
+
+}
+
+.wrap .main .main-1 .pro .rightpro .right-column .logoutpro .logout-column .logout-button:hover{
+    background: #0b5ed7; border: 1px solid #0b5ed7;
 }
 
 
