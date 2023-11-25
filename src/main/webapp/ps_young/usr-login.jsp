@@ -22,23 +22,28 @@
 
         .fullScreen .web-login{
             width: 30%;
-            height: 60vh;
-            margin: 6rem auto 9rem;
+
+            margin: 3.5rem auto;
             padding: 0;
 
         }
 
         .fullScreen .web-login .login-child{
-
-            display: flex; flex-flow: column wrap;
             margin: 3.6rem auto;
+
+            display: flex;
+            flex-flow: row wrap; justify-content: center;
+        }
+
+        .fullScreen .web-login .login-child .px-4{
+            width: 80%;
+            margin: 2.5rem 0;
 
         }
 
-        .fullScreen .web-login .login-child .px-4 {
-
-            margin: 3.5rem 1.2rem;
-
+        .fullScreen .web-login .login-child .px-4 .mb-3:last-child{
+            display: flex; flex-flow: row wrap;
+            justify-content: center;
         }
 
         .fullScreen .web-login .login-child .cnsu-logo{
@@ -74,7 +79,7 @@
                         </label>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">로그인</button>
+                <a class="btn btn-primary" href="../MainPage/MainPage.jsp">로그인</a>
             </form>
         </div>
     </div>
