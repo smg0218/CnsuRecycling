@@ -3,6 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.jsp.smg.MemoDAO" %>
 <%@ page import="com.jsp.smg.Memo" %>
+<%@ page import="org.eclipse.jdt.internal.compiler.apt.model.Factory" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%
@@ -124,6 +125,11 @@
             background: #E6FFFF;
         }
 
+        .calendar table td.sleepover{
+            font-weight:700;
+            background: #5e86ff;
+        }
+
         .calendar .nowDay{
             height: 25px;
             line-height: 25px;
@@ -170,9 +176,9 @@
             // 날짜와 메모를 가져오는 부분
             const MemoList = [
                 <% for (Memo memo : memoList) { %>
-                { date: '<%= memo.getDate() %>', memo: '<%= memo.getMemo() %>' },
-                <%
-                } %>
+                { date: '<%= memo.getDate() %>',
+                    memo: '<%= memo.getMemo() %>' },
+                <% } %>
             ];
 
             // 이전에 표시된 메모를 지움
@@ -236,6 +242,14 @@
             preCal.add(Calendar.DATE, -(week-1));
             int preDate = preCal.get(Calendar.DATE);
 
+            // 날짜 형식 전환
+            String nowDate = preCal.get(Calendar.YEAR) + "-" + (preCal.get(Calendar.MONTH)+2) + "-" + preDate;
+            boolean sleepoverCheck = false;
+
+            // 외박 날짜를 가져오는 부분
+            String startDate = "2023-11-01";
+            String endDate = "2023-11-13";
+
             out.print("<tr>");
             // 1일 앞 부분
             for(int i=1; i<week; i++) {
@@ -246,13 +260,29 @@
             // 1일부터 말일까지 출력
             int lastDay = cal.getActualMaximum(Calendar.DATE);
             String cls;
+            StringBuilder sbNowDate = new StringBuilder();
+            sbNowDate.append(nowDate);
             for(int i=1; i<=lastDay; i++) {
+                if(i<10)
+                    sbNowDate.replace(8,10, "0" + Integer.toString(i));
+                else
+                    sbNowDate.replace(8,10, Integer.toString(i));
+                nowDate = String.valueOf(sbNowDate);
+                System.out.println("nowDate = " + nowDate);
+                if(startDate.equals(nowDate))
+                    sleepoverCheck = true;
+
                 cls = year==ty && month==tm && i==td ? "today":"";
 
-                out.print("<td class='"+cls+"'onclick='MouseClickEvent(this)'>"+i+"</td>");
+                if(sleepoverCheck)
+                    out.print("<td class='sleepover' onclick='MouseClickEvent(this)'>"+i+"</td>");
+                else
+                    out.print("<td class='"+cls+"'onclick='MouseClickEvent(this)'>"+i+"</td>");
                 if(lastDay != i && (++week)%7 == 1) {
                     out.print("</tr><tr>");
                 }
+                if(endDate.equals(nowDate))
+                    sleepoverCheck = false;
             }
 
             // 마지막 주 마지막 일자 다음 처리
