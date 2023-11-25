@@ -65,6 +65,7 @@
     background: #fff;
     width: 67%;
     height: 100%;
+    border-radius: 10px;
 
 }
 
@@ -72,6 +73,7 @@
     background: #fff;
     width: 32%;
     height: 100%;
+    border-radius: 10px;
 }
 
 .wrap .main .main-1 .pro .leftpro .bus-schedule {
@@ -80,12 +82,14 @@
     height: 30%;
     display: flex;
     justify-content: space-between;
+    border-radius: 10px;
 }
 .wrap .main .main-1 .pro .leftpro .bus-schedule .bus-am {
     width: 49%;
     height: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    border-radius: 10px;
 }
 
 .wrap .main .main-1 .pro .leftpro .bus-schedule .bus-pm {
@@ -93,6 +97,7 @@
     height: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    border-radius: 10px;
 }
 
 .wrap .main .main-1 .pro .rightpro {
@@ -116,6 +121,7 @@
     background-color: #ffffff;
     width: 100%;
     height: 37%;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -149,12 +155,14 @@
     background: #fff;
     width: 100%;
     height: 60%;
+    border-radius: 10px;
 }
 .wrap .main .main-1 .pro .rightpro .right-column .college-meal .food {
     width: 100%;
     height: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    border-radius: 10px;
 }
 
 /* 로그아웃 버튼 */
