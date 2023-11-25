@@ -35,8 +35,6 @@
 
     int week = cal.get(Calendar.DAY_OF_WEEK); // 1(일)~7(토)
 
-    String nowDate = Integer.toString(ty) + Integer.toString(tm) + Integer.toString(td);
-
     // MemoDAO를 사용하여 데이터베이스에서 memoList를 가져옴
     List<Memo> memoList = MemoDAO.allMemoList();
     request.setAttribute("memoList", memoList);

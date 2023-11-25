@@ -69,10 +69,11 @@ public class MemoDAO {
 
     //메모를 삭제하는 부분
     public static void removeMemo(String date) {
-        String sql = "delete from calendarmemo where memo_date = ?";
+        String sql = "delete from calendarmemo where memo_date = ? and userid = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)){
             stmt.setString(1, date);
+            stmt.setString(2, "201916011");
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
