@@ -59,7 +59,9 @@
         }
 
         .calendar {
-            width: 280px;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
             margin: 30px auto;
         }
         .calendar .title{
