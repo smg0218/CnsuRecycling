@@ -32,6 +32,17 @@ public class login extends HttpServlet {
 
         }else{
             request.getSession().setAttribute("name",name);
+
+
+
+
+
+
+
+
+
+
+
 //            PrintWriter out = response.getWriter();
 //            out.print(name);
         }
