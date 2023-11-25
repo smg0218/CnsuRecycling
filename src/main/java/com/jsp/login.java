@@ -34,7 +34,7 @@ public class login extends HttpServlet {
 
         }else{
             request.getSession().setAttribute("name",userInfo.get("name"));
-            request.getSession().setAttribute("id",userInfo.get("id"));
+            request.getSession().setAttribute("id",id);
             request.getSession().setAttribute("room_Number",userInfo.get("room_Number"));
             System.out.println("userInfo = " + userInfo.get("name"));
             response.sendRedirect("../MainPage/MainPage.jsp");
