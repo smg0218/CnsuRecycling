@@ -8,6 +8,26 @@
     <title>Title</title>
 </head>
 <body>
+<%
+    String isLogin="로그아웃";
+    String name;
+    String loginInfo="님 반갑습니다!";
+    try{
+        name= session.getAttribute("name").toString();
+        if(name==null){
+            loginInfo="로그인이 필요해요!";
+            isLogin="로그인";
+        }else{
+            loginInfo=name+"님 반갑습니다!";
+        }
+
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+
+
+
+%>
 <div class="wrap">
     <div class="header">
 
@@ -35,8 +55,8 @@
                     <div class="right-column">
                         <div class="logoutpro">
                             <div class="logout-column">
-                                <a class="welcome">님 <p>반갑습니다.</p></a>
-                                <a class="logout-button" href="#" >로그아웃</a>
+                                <a class="welcome"><%=loginInfo%></a>
+                                <a class="logout-button" href="#" ><%=isLogin%></a>
                             </div>
                         </div>
                         <div class="college-meal">

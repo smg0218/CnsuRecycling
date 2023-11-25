@@ -34,20 +34,10 @@ public class login extends HttpServlet {
 
         }else{
             request.getSession().setAttribute("name",userInfo.get("name"));
+            request.getSession().setAttribute("id",userInfo.get("id"));
+            request.getSession().setAttribute("room_Number",userInfo.get("room_Number"));
             System.out.println("userInfo = " + userInfo.get("name"));
-
-
-
-
-
-
-
-
-
-
-
-            PrintWriter out = response.getWriter();
-            out.print(userInfo.get("name"));
+            response.sendRedirect("../MainPage/MainPage.jsp");
         }
 
     }
