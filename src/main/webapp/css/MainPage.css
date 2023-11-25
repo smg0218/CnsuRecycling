@@ -1,5 +1,7 @@
+@import url('./Common.css');
 .wrap {
     background: #f3f3f3;
+    font-family: 'Cafe24Dangdanghae';
 }
 .img {
     background-size: contain;
