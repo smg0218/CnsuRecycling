@@ -67,7 +67,7 @@
 <div class="fullScreen p-3 m-0 border-0 bd-example m-0 border-0">
     <div class="dropdown-menu web-so">
         <div class="so-register">
-            <form method="post" action="#" class="px-4 py-3">
+            <form method="post" action="AddMemo" class="px-4 py-3">
                 <div class="mb-3">
                     <label for="start-so" class="form-label">날짜</label>
                     <input type="date" class="form-control" id="start-so" name="so-start">

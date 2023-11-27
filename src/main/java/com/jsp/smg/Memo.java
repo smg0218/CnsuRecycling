@@ -43,4 +43,12 @@ public class Memo {
     public void setMemo(String memo) {
         this.memo = memo;
     }
+
+    public Memo() {
+    }
+
+    public Memo(String date, String memo) {
+        this.date = date;
+        this.memo = memo;
+    }
 }
