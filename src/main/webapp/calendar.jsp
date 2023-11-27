@@ -3,7 +3,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.jsp.smg.MemoDAO" %>
 <%@ page import="com.jsp.smg.Memo" %>
-<%@ page import="org.eclipse.jdt.internal.compiler.apt.model.Factory" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%

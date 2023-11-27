@@ -73,11 +73,11 @@
             <form method="post" action="AddMemo" class="px-4 py-3">
                 <div class="mb-3">
                     <label for="date" class="form-label">날짜</label>
-                    <input type="date" class="form-control" id="date" name="so-start">
+                    <input type="date" class="form-control" id="date" name="date">
                 </div>
                 <div class="mb-3">
                     <label for="memo" class="form-label">메모내용</label>
-                    <textarea type="text" class="form-control" id="memo" name="so-reason"></textarea>
+                    <textarea type="text" class="form-control" id="memo" name="memo"></textarea>
                 </div>
                 <input type="submit"  value="신청" class="btn btn-primary">
             </form>

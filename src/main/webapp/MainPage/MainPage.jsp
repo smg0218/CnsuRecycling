@@ -1,4 +1,6 @@
 <%@ page import="db.DBRepository" %>
+<%@ page import="db.UserInfo" %>
+<%@ page import="java.util.Collection" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -13,29 +15,21 @@
 <body>
 <%
     String isLogin="로그아웃";
-    String name;
+    String name = DBRepository.userInfo.getName();
+    String id = DBRepository.userInfo.getId();
     String loginInfo="님 반갑습니다!";
 
-    String id = DBRepository.userInfo.get("id");
 
 //    System.out.println(session.getAttribute("name"));
 //    System.out.println(session.getAttribute("id"));
 //    System.out.println(session.getAttribute("room_Number"));
 
-    try{
-        name= session.getAttribute("name").toString();
         if(name==null){
             loginInfo="로그인이 필요해요!";
             isLogin="로그인";
-        }else{
-            loginInfo=name+"님 반갑습니다!";
         }
-
-    }catch (Exception e){
-        e.printStackTrace();
-    }
-
-
+        else
+            loginInfo = name + "님 반갑습니다!";
 
 %>
 <div class="wrap">

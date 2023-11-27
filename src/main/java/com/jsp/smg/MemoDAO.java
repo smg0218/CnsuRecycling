@@ -55,7 +55,7 @@ public class MemoDAO {
 
     // 메모를 추가하는 부분
     public static void addMemo(Memo memo, String id) {
-        String sql = "INSERT INTO calendarmemo (id, userid, memo_date, memo) VALUES (null, ?, ?, ?)";
+        String sql = "INSERT INTO calendarmemo (id, user_id, memo_date, memo) VALUES (null, ?, ?, ?)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)){
             stmt.setString(1, id); // 학번

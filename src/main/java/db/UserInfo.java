@@ -4,8 +4,6 @@ import java.util.Objects;
 
 public class UserInfo {
     private String id;
-    private String password;
-
     private String name;
     private int room_Number;
 
@@ -15,27 +13,7 @@ public class UserInfo {
         this.room_Number = room_Number;
     }
 
-    @Override
-    public String toString() {
-        return "UserInfo{" +
-                "id='" + id + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", room_Number=" + room_Number +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserInfo userInfo = (UserInfo) o;
-        return room_Number == userInfo.room_Number && Objects.equals(id, userInfo.id) && Objects.equals(password, userInfo.password) && Objects.equals(name, userInfo.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, password, name, room_Number);
+    public UserInfo() {
     }
 
     public String getId() {
@@ -44,14 +22,6 @@ public class UserInfo {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getName() {
@@ -68,5 +38,27 @@ public class UserInfo {
 
     public void setRoom_Number(int room_Number) {
         this.room_Number = room_Number;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserInfo userInfo = (UserInfo) o;
+        return room_Number == userInfo.room_Number && Objects.equals(id, userInfo.id) && Objects.equals(name, userInfo.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, room_Number);
+    }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", room_Number=" + room_Number +
+                '}';
     }
 }
