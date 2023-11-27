@@ -188,6 +188,7 @@
 
 }
 
+/* 로그아웃 버튼:hover*/
 .wrap .main .main-1 .pro .rightpro .right-column .logoutpro .logout-column .logout-button:hover{
     background: #0b5ed7; border: 1px solid #0b5ed7;
 }

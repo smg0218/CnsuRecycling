@@ -3,7 +3,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/MainPage.css">
+    <link rel="stylesheet" href="../css/MainPage.css?after">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -49,7 +49,7 @@
                             </div>
                             <div class="schedule">
                                 <div class="soregister">
-                                    <a class="sor" href="./so-register.jsp">외박신청</a>
+                                    <a href="./so-register.jsp" class="sor">외박신청</a>
                                 </div>
                             </div>
                         </div>
