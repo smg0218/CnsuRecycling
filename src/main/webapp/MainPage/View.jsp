@@ -15,9 +15,8 @@
     List<Post> posts = board.getSleepovers();
     for (Post post : posts) { %>
 <div>
-    <p><%= post.getId() %></p>
-    <p><%= post.getRoom_Number() %></p>
-    <p><%= post.getDate() %></p>
+    <p><%= post.getStart_date() %></p>
+    <p><%= post.getEnd_date() %></p>
     <p><%= post.getReason() %></p>
 </div>
 <% } %>

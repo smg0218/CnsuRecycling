@@ -18,6 +18,7 @@
     System.out.println(session.getAttribute("name"));
     System.out.println(session.getAttribute("id"));
     System.out.println(session.getAttribute("room_Number"));
+
     try{
         name= session.getAttribute("name").toString();
         if(name==null){

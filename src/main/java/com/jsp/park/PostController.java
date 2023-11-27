@@ -12,12 +12,13 @@ public class PostController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter(""));
         int room_Number = Integer.parseInt(request.getParameter(""));
-        int date = Integer.parseInt(request.getParameter(""));
+        String date_start = request.getParameter("");
+        String date_end = request.getParameter("");
         String reason = request.getParameter("reason");
 
 
         Application board = new Application();
-        Post post = new Post(id,room_Number,date,reason);
+        Post post = new Post(room_Number,date_start,date_end,reason);
         board.addSleepover(post);
 
         response.sendRedirect("index.jsp");

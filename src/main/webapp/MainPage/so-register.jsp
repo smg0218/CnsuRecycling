@@ -1,3 +1,6 @@
+<%@ page import="com.jsp.park.Application" %>
+<%@ page import="com.jsp.park.Post" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -10,7 +13,7 @@
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="../css/Common.css">
+    <link href="../cs s/Common.css">
 
     <style>
         textarea {
@@ -67,18 +70,18 @@
 <div class="fullScreen p-3 m-0 border-0 bd-example m-0 border-0">
     <div class="dropdown-menu web-so">
         <div class="so-register">
-            <form method="post" action="#" class="px-4 py-3">
+            <form method="post" action="Sleepover" class="px-4 py-3">
                 <div class="mb-3">
                     <label for="start-so" class="form-label">외박시작일</label>
-                    <input type="date" class="form-control" id="start-so" name="so-start">
+                    <input type="date" class="form-control" id="start-so" name="Start_date">
                 </div>
                 <div class="mb-3">
                     <label for="end-so" class="form-label">외박종료일</label>
-                    <input type="date" class="form-control" id="end-so" name="so-end" >
+                    <input type="date" class="form-control" id="end-so" name="End_date" >
                 </div>
                 <div class="mb-3">
                     <label for="reason-so" class="form-label">외박사유</label>
-                    <textarea type="text" class="form-control" id="reason-so" name="so-reason"></textarea>
+                    <textarea type="text" class="form-control" id="reason-so" name="Reason"></textarea>
                 </div>
                 <input type="submit"  value="신청" class="btn btn-primary">
             </form>
