@@ -95,6 +95,10 @@
             border: 1px solid #ccc;
         }
 
+        .calendar table tbody td:hover{
+            background: #919191;
+        }
+
         .calendar table td:nth-child(7n+1){
             color: red;
         }
