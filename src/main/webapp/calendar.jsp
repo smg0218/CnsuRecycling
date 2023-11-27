@@ -296,10 +296,6 @@
         </tbody>
     </table>
 
-    <div class="nowDay">
-        <a href="calendar.jsp">오늘날짜로</a>
-    </div>
-
     <div class="schedule">
         <h2>메모</h2>
         <div id="memoList">

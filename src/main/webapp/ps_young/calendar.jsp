@@ -118,10 +118,20 @@
     </style>
 
     <script type="text/javascript">
+        var pos = 0;
         function change() {
             var f = document.frm;
-            f.action="calendar.jsp";
+            f.action="MainPage.jsp";
             f.submit();
+        }
+
+        function MouseClickEvent(obj) {
+            if (pos)
+                pos.style.background = "";
+            obj.style.background = "rgb(255,129,129)";
+            if (pos.className === "today")
+                pos.style.background = "rgb(230,255,255)";
+            pos = obj;
         }
     </script>
 
@@ -167,7 +177,7 @@
             // 1일 앞 부분
             for(int i=1; i<week; i++) {
                 //out.print("<td> </td>");
-                out.print("<td class='gray'>"+(preDate++)+"</td>");
+                out.print("<td class='gray' onclick='MouseClickEvent(this)'>"+(preDate++)+"</td>");
             }
 
             // 1일부터 말일까지 출력
@@ -176,7 +186,7 @@
             for(int i=1; i<=lastDay; i++) {
                 cls = year==ty && month==tm && i==td ? "today":"";
 
-                out.print("<td class='"+cls+"'>"+i+"</td>");
+                out.print("<td class='"+cls+"'onclick='MouseClickEvent(this)'>"+i+"</td>");
                 if(lastDay != i && (++week)%7 == 1) {
                     out.print("</tr><tr>");
                 }
@@ -186,16 +196,12 @@
             int n = 1;
             for(int i = (week-1)%7; i<6; i++) {
                 // out.print("<td> </td>");
-                out.print("<td class='gray'>"+(n++)+"</td>");
+                out.print("<td class='gray' onclick='MouseClickEvent(this)'>"+(n++)+"</td>");
             }
             out.print("</tr>");
         %>
         </tbody>
     </table>
-
-    <div class="footer">
-        <a href="calendar.jsp">오늘날짜로</a>
-    </div>
 
 </div>
 
