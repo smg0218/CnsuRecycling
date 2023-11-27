@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../css/MainPage.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <title>Title</title>
 </head>
 <body>
@@ -48,8 +48,8 @@
                                 <jsp:include page="../ps_young/calendar.jsp"/>
                             </div>
                             <div class="schedule">
-                                <div class="sor">
-                                    <a class="so-register" href="./so-register.jsp">외박신청</a>
+                                <div class="soregister">
+                                    <a class="sor" href="./so-register.jsp">외박신청</a>
                                 </div>
                             </div>
                         </div>
