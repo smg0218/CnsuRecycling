@@ -81,6 +81,7 @@
                     <textarea type="text" class="form-control" id="reason-so" name="so-reason"></textarea>
                 </div>
                 <input type="submit"  value="신청" class="btn btn-primary">
+                <input type="submit"  value="취소" class="btn btn-primary">
             </form>
         </div>
     </div>

@@ -48,7 +48,9 @@
                                 <jsp:include page="../ps_young/calendar.jsp"/>
                             </div>
                             <div class="schedule">
-
+                                <div class="sor">
+                                    <a class="so-register" href="./so-register.jsp">외박신청</a>
+                                </div>
                             </div>
                         </div>
                         <div class="bus-schedule">
