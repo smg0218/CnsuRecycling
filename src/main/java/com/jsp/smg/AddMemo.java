@@ -1,8 +1,6 @@
 package com.jsp.smg;
 
-import com.jsp.park.Application;
-import com.jsp.park.DBC;
-import com.jsp.park.Post;
+import db.DBRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,13 +19,22 @@ public class AddMemo extends HttpServlet{
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=utf-8");
 
-        String date = request.getParameter("Start_date");
-        String NewMemo = request.getParameter("Memo");
+        String id = request.getParameter("id");
+        String date = request.getParameter("date");
+        String NewMemo = request.getParameter("memo");
 
-        request.getSession().setAttribute("date",date);
-        request.getSession().setAttribute("Reason",NewMemo);
+        System.out.println("date = " + date);
+        System.out.println("NewMemo = " + NewMemo);
 
-        MemoDAO.addMemo(new Memo(date, NewMemo));
+        request.setAttribute("userid", DBRepository.userInfo.get("id"));
+        request.getSession().setAttribute("memo_date",date);
+        request.getSession().setAttribute("memo",NewMemo);
+
+        System.out.println("id = " + id);
+        System.out.println("date = " + date);
+        System.out.println("NewMemo = " + NewMemo);
+
+        MemoDAO.addMemo(new Memo(date, NewMemo), id);
 
         response.sendRedirect("../MainPage/MainPage.jsp");
     }

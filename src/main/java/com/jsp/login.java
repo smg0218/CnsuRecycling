@@ -1,5 +1,8 @@
 package com.jsp;
 
+import db.DBRepository;
+import db.UserInfo;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -29,12 +32,12 @@ public class login extends HttpServlet {
 
         String id=request.getParameter("id");
         String password = request.getParameter("password");
-        Map<String, Object> userInfo = select(id, password);
+        Map<String, UserInfo> userInfo = DBRepository.select(id, password);
         if (userInfo.get("name")==null){
 
         }else{
             request.getSession().setAttribute("name",userInfo.get("name"));
-            request.getSession().setAttribute("id",id);
+            request.getSession().setAttribute("id",userInfo.get("id"));
             request.getSession().setAttribute("room_Number",userInfo.get("room_Number"));
             System.out.println("userInfo = " + userInfo.get("name"));
             response.sendRedirect("../MainPage/MainPage.jsp");

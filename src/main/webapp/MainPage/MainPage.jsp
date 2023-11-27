@@ -1,3 +1,4 @@
+<%@ page import="db.DBRepository" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -15,9 +16,11 @@
     String name;
     String loginInfo="님 반갑습니다!";
 
-    System.out.println(session.getAttribute("name"));
-    System.out.println(session.getAttribute("id"));
-    System.out.println(session.getAttribute("room_Number"));
+    String id = DBRepository.userInfo.get("id");
+
+//    System.out.println(session.getAttribute("name"));
+//    System.out.println(session.getAttribute("id"));
+//    System.out.println(session.getAttribute("room_Number"));
 
     try{
         name= session.getAttribute("name").toString();
@@ -50,7 +53,8 @@
                             </div>
                             <div class="schedule">
                                 <div class="soregister">
-                                    <a href="./so-register.jsp" class="sor">외박신청</a>
+                                    <a href="./so-register.jsp?id=${id}&room_Number=${room_Number}" class="sor">외박신청</a>
+                                    <a href="./memo-register.jsp" class="sor">메모추가</a>
                                 </div>
                             </div>
                         </div>
