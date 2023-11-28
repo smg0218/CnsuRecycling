@@ -49,13 +49,11 @@
                                 <jsp:include page="../ps_young/calendar.jsp"/>
                             </div>
                             <div class="schedule">
-<<<<<<< Updated upstream
-                                <div id="memoList">
+                                <div class="memo">
+                                    <div id="memoList">
 
+                                    </div>
                                 </div>
-=======
-                                <div class="memo"></div>
->>>>>>> Stashed changes
                                 <div class="soregister">
                                     <a href="./so-register.jsp" class="sor">외박신청</a>
                                     <a href="./memo-register.jsp" class="sor">메모추가</a>
