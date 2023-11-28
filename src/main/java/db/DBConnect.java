@@ -56,13 +56,12 @@ public class DBConnect {
             ps=con.prepareStatement(sql);
             ps.setString(1, id);
             ps.setString(2, pw);
-            rs=ps.executeQuery();
+            rs = ps.executeQuery();
             if(rs.next()){
                 info.put("id",rs.getString(1));
                 info.put("name",rs.getString(2));
                 info.put("room_Number",rs.getInt(3));
                 return info;
-
             }else{
                 return null;
             }

@@ -252,34 +252,48 @@
                 nowDate = nowDate + cal.get(Calendar.MONTH);
             nowDate = nowDate + ConvertIntegerToString(preDate);
 
-            int startSODate = ConvertStringToInteger(nowDate);
+            int startSODate = 0;
             int endSODate = 0;
 
             for (Post sleepover : sleepoverList) {
-                if (ConvertStringToInteger(RemoveHypen(sleepover.getStart_date())) < ConvertStringToInteger(nowDate))
+                if (ConvertStringToInteger(RemoveHypen(sleepover.getStart_date())) >= ConvertStringToInteger(nowDate))
                     continue;
                 if (ConvertStringToInteger(RemoveHypen(sleepover.getEnd_date())) >= ConvertStringToInteger(nowDate)) {
                     startSODate = ConvertStringToInteger(RemoveHypen(sleepover.getStart_date()));
                     endSODate = ConvertStringToInteger(RemoveHypen(sleepover.getEnd_date()));
+                    System.out.println("startSODate처음 = " + startSODate);
+                    System.out.println("endSODate처음 = " + endSODate);
                 }
             }
 
-            System.out.println("startSODate = " + startSODate);
-            System.out.println("endSODate = " + endSODate);
+            System.out.println("startSODate처음끝 = " + startSODate);
+            System.out.println("endSODate처음끝 = " + endSODate);
 
             out.print("<tr>");
             // 1일 앞 부분
             for(int i=1; i<week; i++) {
+                System.out.println("nowDate = " + nowDate);
                 //out.print("<td> </td>");
                 if(ConvertStringToInteger(nowDate) >= startSODate && ConvertStringToInteger(nowDate) <= endSODate) {
                     out.print("<td class='gray, sleepover' onclick='MouseClickEvent(this)'>" + (preDate++) + "</td>");
                     nowDate = ChangeStringValue(nowDate, 6, 8);
                     nowDate = nowDate + preDate;
                 } else {
+                    for (Post sleepover : sleepoverList) {
+                        if (ConvertStringToInteger(RemoveHypen(sleepover.getStart_date())) < ConvertStringToInteger(nowDate))
+                            continue;
+                        if (ConvertStringToInteger(RemoveHypen(sleepover.getEnd_date())) >= ConvertStringToInteger(nowDate)) {
+                            startSODate = ConvertStringToInteger(RemoveHypen(sleepover.getStart_date()));
+                            endSODate = ConvertStringToInteger(RemoveHypen(sleepover.getEnd_date()));
+                            System.out.println("startSODate저번달 = " + startSODate);
+                            System.out.println("endSODate저번달 = " + endSODate);
+
+                        }
+                    }
                     out.print("<td class='gray' onclick='MouseClickEvent(this)'>" + (preDate++) + "</td>");
-                    nowDate = ChangeStringValue(nowDate, 6, 8);
-                    nowDate = nowDate + preDate;
                 }
+                nowDate = ChangeStringValue(nowDate, 6, 8);
+                nowDate = nowDate + preDate;
             }
 
             // 1일부터 말일까지 출력
@@ -304,12 +318,11 @@
                     endSODate = ConvertStringToInteger(RemoveHypen(sleepover.getEnd_date()));
                 }
             }
-            System.out.println("startSODate = " + startSODate);
-            System.out.println("endSODate = " + endSODate);
 
             for(int i=1; i<=lastDay; i++) {
+                System.out.println("nowDate = " + nowDate);
                 cls = year == ty && month == tm && i == td ? "today" : "";
-                if (ConvertStringToInteger(nowDate) >= startSODate
+                if (ConvertStringToInteger(nowDate) >= startSODate-1
                         && ConvertStringToInteger(nowDate) < endSODate) {
                     out.print("<td class='sleepover' onclick='MouseClickEvent(this)'>" + i + "</td>");
                 }
@@ -321,6 +334,8 @@
                         {
                             startSODate = ConvertStringToInteger(RemoveHypen(sleepover.getStart_date()));
                             endSODate = ConvertStringToInteger(RemoveHypen(sleepover.getEnd_date()));
+                            System.out.println("startSODate이번달 = " + startSODate);
+                            System.out.println("endSODate이번달 = " + endSODate);
                         }
                     }
                     out.print("<td class='" + cls + "'onclick='MouseClickEvent(this)'>" + i + "</td>");
@@ -351,6 +366,17 @@
             nowDate = nowDate + "01";
             int n = 1;
             for(int i = (week-1)%7; i<6; i++) {
+                for (Post sleepover : sleepoverList) {
+                    if(ConvertStringToInteger(RemoveHypen(sleepover.getStart_date())) > ConvertStringToInteger(nowDate))
+                        continue;
+                    if (ConvertStringToInteger(RemoveHypen(sleepover.getEnd_date())) >= ConvertStringToInteger(nowDate))
+                    {
+                        startSODate = ConvertStringToInteger(RemoveHypen(sleepover.getStart_date()));
+                        endSODate = ConvertStringToInteger(RemoveHypen(sleepover.getEnd_date()));
+                        System.out.println("startSODate마지막달 = " + startSODate);
+                        System.out.println("endSODate마지막달 = " + endSODate);
+                    }
+                }
                 if (ConvertStringToInteger(nowDate) >= startSODate && ConvertStringToInteger(nowDate) <= endSODate)
                     out.print("<td class='gray, sleepover' onclick='MouseClickEvent(this)'>" +(n++)+ "</td>");
                 else {
