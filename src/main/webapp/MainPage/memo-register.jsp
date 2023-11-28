@@ -80,7 +80,7 @@
                     <label for="memo" class="form-label">메모내용</label>
                     <textarea type="text" class="form-control" id="memo" name="memo"></textarea>
                 </div>
-                <input type="submit"  value="신청" class="btn btn-primary">
+                <input type="submit"  value="추가" class="btn btn-primary">
             </form>
         </div>
     </div>
