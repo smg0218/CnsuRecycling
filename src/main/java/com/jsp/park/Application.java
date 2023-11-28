@@ -1,4 +1,6 @@
 package com.jsp.park;
+import com.jsp.smg.DBUtils;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,27 +10,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-
-
-    public Application(Connection connection) {
-        this.connection = connection;
-    }
-
-    public Application() {
-    }
-
-    private Connection connection;
-
+    private static Connection conn = DBUtils.getConnection();
 
     // 글 목록 가져오기
-    public List<Post> getSleepovers() {
-
+    public static List<Post> getSleepovers(String id) {
 
         List<Post> sleepovers = new ArrayList<>();
-        String sql = "SELECT * FROM sleepover";
 
-        try (PreparedStatement statement = connection.prepareStatement(sql);
-             ResultSet resultSet = statement.executeQuery()) {
+        String sql = "SELECT * FROM sleepover where user_id = ?";
+
+        try (PreparedStatement statement = conn.prepareStatement(sql)) {
+             statement.setString(1, id);
+             ResultSet resultSet = statement.executeQuery();
+
             while (resultSet.next()) {
                 Post sleepover = new Post(
                         resultSet.getInt("room_Number"),
@@ -47,10 +41,9 @@ public class Application {
     // 글 추가
     public void addSleepover(Post sleepover) {
 
-
         String sql = "INSERT INTO sleepover ( room_Number,date_start,date_end, reason) VALUES (?,?,?,?)";
 
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setInt(1, sleepover.getRoom_Number());
             statement.setString(2, sleepover.getStart_date());
             statement.setString(3, sleepover.getEnd_date());
@@ -66,7 +59,7 @@ public class Application {
 
         String sql = "INSERT INTO sleepover ( user_id, room_Number,date_start,date_end, reason) VALUES (?,?,?,?,?)";
 
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setString(1, id);
             statement.setInt(2, sleepover.getRoom_Number());
             statement.setString(3, sleepover.getStart_date());

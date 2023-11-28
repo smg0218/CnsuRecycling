@@ -1,4 +1,9 @@
 <%@page import="java.util.Calendar"%>
+<%@ page import="com.jsp.smg.Memo" %>
+<%@ page import="com.jsp.smg.MemoDAO" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.jsp.park.Post" %>
+<%@ page import="com.jsp.park.Application" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%
@@ -29,7 +34,14 @@
     year = cal.get(Calendar.YEAR);
     month = cal.get(Calendar.MONTH)+1;
 
+    String id = session.getAttribute("id").toString();
+
     int week = cal.get(Calendar.DAY_OF_WEEK); // 1(일)~7(토)
+    // MemoDAO를 사용하여 데이터베이스에서 memoList를 가져옴
+    List<Memo> memoList = MemoDAO.AllMemoList(id);
+
+    //Application을 사용하여 데이터베이스에서 SleepoverList를 가져옴
+    List<Post> sleepoverList = Application.getSleepovers(id);
 %>
 <!DOCTYPE html>
 <html>
@@ -136,6 +148,52 @@
             if (pos.className === "today")
                 pos.style.background = "rgb(230,255,255)";
             pos = obj;
+
+            //  gray class 태그가 붙었는지 확인
+            const grayCheck = obj.classList.contains('gray');
+
+            // 선택한 날짜의 메모를 서버에서 가져와서 표시
+            var selectedYear = document.getElementsByName("year")[0].value;
+            let selectedMonth = document.getElementsByName("month")[0].value;
+            if(grayCheck) {
+                if(Number(obj.innerText) > 20)
+                    selectedMonth = Number(document.getElementsByName("month")[0].value) - 1;
+                else if(Number(obj.innerText) < 10)
+                    selectedMonth = Number(document.getElementsByName("month")[0].value) + 1;
+            }
+            let selectedDate = obj.innerText;
+
+            if(selectedDate < 10) selectedDate = "0" + obj.innerText;
+
+            var selectDate = selectedYear + "-" + selectedMonth + "-" + selectedDate;
+
+            // 날짜와 메모를 가져오는 부분
+            const MemoList = [
+                <% for (Memo memo : memoList) { %>
+                { date: '<%= memo.getDate() %>',
+                    memo: '<%= memo.getMemo() %>' },
+                <% } %>
+            ];
+            console.log(MemoList);
+
+            // 이전에 표시된 메모를 지움
+            var memoListElement = document.getElementById("memoList");
+            while (memoListElement.firstChild) {
+                memoListElement.removeChild(memoListElement.firstChild);
+            }
+
+            // 새로운 메모를 추가
+            var hasMemo = false;
+            let dateNumber = 0;
+            for (var x of MemoList) {
+                if (x.date === selectDate) {
+                    let memoItem = document.createElement("p");
+                    memoItem.textContent = MemoList[dateNumber].memo;
+                    memoListElement.appendChild(memoItem);
+                    hasMemo = true;
+                }
+                dateNumber++;
+            }
         }
     </script>
 
@@ -176,6 +234,11 @@
             Calendar preCal = (Calendar)cal.clone();
             preCal.add(Calendar.DATE, -(week-1));
             int preDate = preCal.get(Calendar.DATE);
+
+            String nowDate = String.valueOf(cal.get(Calendar.YEAR));
+            nowDate = nowDate + (cal.get(Calendar.MONTH)+1);
+            nowDate = nowDate + preDate;
+            System.out.println("nowDate = " + nowDate);
 
             out.print("<tr>");
             // 1일 앞 부분

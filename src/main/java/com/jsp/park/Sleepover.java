@@ -38,9 +38,7 @@ public class Sleepover extends HttpServlet {
         String End_date=request.getParameter("End_date");
         String Reason= request.getParameter("Reason");
 
-        DBC dbc = new DBC();
-        Connection con = dbc.DBC();
-        Application ap = new Application(con);
+        Application ap = new Application();
         Post post = new Post(room_Number, Start_date,End_date,Reason);
         ap.addSleepover(post, id);
 

@@ -12,12 +12,14 @@ public class MemoDAO {
     private static Connection conn = DBUtils.getConnection();
 
     //모든 메모를 가져오는 부분
-    public static List<Memo> allMemoList() {
+    public static List<Memo> AllMemoList(String id) {
         List<Memo> memoList = new ArrayList<>();
-        String sql = "select * from calendarmemo";
+        String sql = "select * from calendarmemo where user_id=?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)){
+            stmt.setString(1, id); // 학번
             ResultSet rs = stmt.executeQuery();
+
             while (rs.next()) {
                 Memo memo = new Memo();
                 memo.setDate(rs.getString("memo_date"));
@@ -28,16 +30,18 @@ public class MemoDAO {
             e.printStackTrace();
         }
 
+        System.out.println("memoList = " + memoList);
         return memoList;
     }
 
     //추후에 학번에 맞는 메모만 가져오는 부분
-    public static List<Memo> getMemoList(String date) {
+    public static List<Memo> getMemoList(String id, String date) {
         List<Memo> memoList = new ArrayList<>();
-        String sql = "select memo from calendarmemo where memo_date = ?";
+        String sql = "select memo from calendarmemo where id=? and memo_date=?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)){
-            stmt.setString(1, date); // 학번
+            stmt.setString(1, id); // 학번
+            stmt.setString(1, date); // 날짜
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
