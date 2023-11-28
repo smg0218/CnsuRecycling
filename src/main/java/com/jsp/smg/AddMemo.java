@@ -25,7 +25,6 @@ public class AddMemo extends HttpServlet{
         String date = request.getParameter("date");
         String NewMemo = request.getParameter("memo");
 
-
         MemoDAO.addMemo(new Memo(date, NewMemo), id);
 
         response.sendRedirect("../MainPage/MainPage.jsp");

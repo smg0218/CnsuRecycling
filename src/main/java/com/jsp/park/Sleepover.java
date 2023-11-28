@@ -31,19 +31,18 @@ public class Sleepover extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=utf-8");
 
+        String id = request.getSession().getAttribute("id").toString();
+        int room_Number = Integer.parseInt(request.getSession().getAttribute("room_Number").toString());
+
         String Start_date = request.getParameter("Start_date");
         String End_date=request.getParameter("End_date");
         String Reason= request.getParameter("Reason");
 
-        request.getSession().setAttribute("Start_date",Start_date);
-        request.getSession().setAttribute("End_date",End_date);
-        request.getSession().setAttribute("Reason",Reason);
-
         DBC dbc = new DBC();
         Connection con = dbc.DBC();
         Application ap = new Application(con);
-        Post post = new Post(101, Start_date,End_date,Reason);
-        ap.addSleepover(post);
+        Post post = new Post(room_Number, Start_date,End_date,Reason);
+        ap.addSleepover(post, id);
 
         response.sendRedirect("../MainPage/MainPage.jsp");
 

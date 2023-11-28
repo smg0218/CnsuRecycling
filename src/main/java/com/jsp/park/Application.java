@@ -61,4 +61,21 @@ public class Application {
         }
     }
 
+    public void addSleepover(Post sleepover, String id) {
+
+
+        String sql = "INSERT INTO sleepover ( user_id, room_Number,date_start,date_end, reason) VALUES (?,?,?,?,?)";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, id);
+            statement.setInt(2, sleepover.getRoom_Number());
+            statement.setString(3, sleepover.getStart_date());
+            statement.setString(4, sleepover.getEnd_date());
+            statement.setString(5, sleepover.getReason());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
