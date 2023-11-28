@@ -49,6 +49,7 @@
                                 <jsp:include page="../ps_young/calendar.jsp"/>
                             </div>
                             <div class="schedule">
+                                <h2>메모</h2>
                                 <div class="memo">
                                     <div id="memoList">
 

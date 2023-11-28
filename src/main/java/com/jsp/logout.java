@@ -41,9 +41,6 @@ public class logout extends HttpServlet {
 
         response.sendRedirect("/ps_young/usr-login.jsp");
 
-
-
-
     }
 
 

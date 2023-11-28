@@ -4,6 +4,12 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.jsp.park.Post" %>
 <%@ page import="com.jsp.park.Application" %>
+<%@ page import="com.jsp.smg.Utils" %>
+<%@ page import="com.jsp.park.Sleepover" %>
+<%@ page import="static com.jsp.smg.Utils.ConvertStringToInteger" %>
+<%@ page import="static com.jsp.smg.Utils.RemoveHypen" %>
+<%@ page import="static com.jsp.smg.Utils.*" %>
+<%@ page import="com.mysql.cj.xdevapi.JsonValue" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%
@@ -120,6 +126,11 @@
         .calendar table td.gray {
             color: #ccc;
         }
+
+        .calendar table td.sleepover{
+            background: #5e86ff;
+        }
+
         .calendar table td.today{
             font-weight:700;
             background: #E6FFFF;
@@ -174,7 +185,6 @@
                     memo: '<%= memo.getMemo() %>' },
                 <% } %>
             ];
-            console.log(MemoList);
 
             // 이전에 표시된 메모를 지움
             var memoListElement = document.getElementById("memoList");
@@ -236,34 +246,119 @@
             int preDate = preCal.get(Calendar.DATE);
 
             String nowDate = String.valueOf(cal.get(Calendar.YEAR));
-            nowDate = nowDate + (cal.get(Calendar.MONTH)+1);
-            nowDate = nowDate + preDate;
-            System.out.println("nowDate = " + nowDate);
+            if((cal.get(Calendar.MONTH)) < 10)
+                nowDate = nowDate + "0" + cal.get(Calendar.MONTH);
+            else
+                nowDate = nowDate + cal.get(Calendar.MONTH);
+            nowDate = nowDate + ConvertIntegerToString(preDate);
+
+            int startSODate = ConvertStringToInteger(nowDate);
+            int endSODate = 0;
+
+            for (Post sleepover : sleepoverList) {
+                if (ConvertStringToInteger(RemoveHypen(sleepover.getStart_date())) < ConvertStringToInteger(nowDate))
+                    continue;
+                if (ConvertStringToInteger(RemoveHypen(sleepover.getEnd_date())) >= ConvertStringToInteger(nowDate)) {
+                    startSODate = ConvertStringToInteger(RemoveHypen(sleepover.getStart_date()));
+                    endSODate = ConvertStringToInteger(RemoveHypen(sleepover.getEnd_date()));
+                }
+            }
+
+            System.out.println("startSODate = " + startSODate);
+            System.out.println("endSODate = " + endSODate);
 
             out.print("<tr>");
             // 1일 앞 부분
             for(int i=1; i<week; i++) {
                 //out.print("<td> </td>");
-                out.print("<td class='gray' onclick='MouseClickEvent(this)'>"+(preDate++)+"</td>");
+                if(ConvertStringToInteger(nowDate) >= startSODate && ConvertStringToInteger(nowDate) <= endSODate) {
+                    out.print("<td class='gray, sleepover' onclick='MouseClickEvent(this)'>" + (preDate++) + "</td>");
+                    nowDate = ChangeStringValue(nowDate, 6, 8);
+                    nowDate = nowDate + preDate;
+                } else {
+                    out.print("<td class='gray' onclick='MouseClickEvent(this)'>" + (preDate++) + "</td>");
+                    nowDate = ChangeStringValue(nowDate, 6, 8);
+                    nowDate = nowDate + preDate;
+                }
             }
 
             // 1일부터 말일까지 출력
             int lastDay = cal.getActualMaximum(Calendar.DATE);
             String cls;
-            for(int i=1; i<=lastDay; i++) {
-                cls = year==ty && month==tm && i==td ? "today":"";
 
-                out.print("<td class='"+cls+"'onclick='MouseClickEvent(this)'>"+i+"</td>");
-                if(lastDay != i && (++week)%7 == 1) {
+            if((cal.get(Calendar.MONTH)+1)<10) {
+                nowDate = ChangeStringValue(nowDate, 4, 8);
+                nowDate = nowDate + "0" + Utils.ConvertIntegerToString(cal.get(Calendar.MONTH) + 1);
+            }
+            else {
+                nowDate = ChangeStringValue(nowDate, 4, 8);
+                nowDate = nowDate + Utils.ConvertIntegerToString(cal.get(Calendar.MONTH) + 1);
+            }
+            nowDate = nowDate + "01";
+
+            for (Post sleepover : sleepoverList) {
+                if (ConvertStringToInteger(RemoveHypen(sleepover.getStart_date())) > ConvertStringToInteger(nowDate))
+                    continue;
+                if (ConvertStringToInteger(RemoveHypen(sleepover.getEnd_date())) >= ConvertStringToInteger(nowDate)) {
+                    startSODate = ConvertStringToInteger(RemoveHypen(sleepover.getStart_date()));
+                    endSODate = ConvertStringToInteger(RemoveHypen(sleepover.getEnd_date()));
+                }
+            }
+            System.out.println("startSODate = " + startSODate);
+            System.out.println("endSODate = " + endSODate);
+
+            for(int i=1; i<=lastDay; i++) {
+                cls = year == ty && month == tm && i == td ? "today" : "";
+                if (ConvertStringToInteger(nowDate) >= startSODate
+                        && ConvertStringToInteger(nowDate) < endSODate) {
+                    out.print("<td class='sleepover' onclick='MouseClickEvent(this)'>" + i + "</td>");
+                }
+                else {
+                    for (Post sleepover : sleepoverList) {
+                        if(ConvertStringToInteger(RemoveHypen(sleepover.getStart_date())) < ConvertStringToInteger(nowDate))
+                            continue;
+                        if (ConvertStringToInteger(RemoveHypen(sleepover.getEnd_date())) >= ConvertStringToInteger(nowDate))
+                        {
+                            startSODate = ConvertStringToInteger(RemoveHypen(sleepover.getStart_date()));
+                            endSODate = ConvertStringToInteger(RemoveHypen(sleepover.getEnd_date()));
+                        }
+                    }
+                    out.print("<td class='" + cls + "'onclick='MouseClickEvent(this)'>" + i + "</td>");
+                }
+
+                if (lastDay != i && (++week) % 7 == 1) {
                     out.print("</tr><tr>");
+                }
+
+                if(i<10) {
+                    nowDate = ChangeStringValue(nowDate, 6, 8);
+                    nowDate = nowDate + "0" + ConvertIntegerToString(i);
+                } else {
+                    nowDate = ChangeStringValue(nowDate, 6, 8);
+                    nowDate = nowDate + ConvertIntegerToString(i);
                 }
             }
 
+            if((cal.get(Calendar.MONTH)+2)<10) {
+                nowDate = ChangeStringValue(nowDate, 4, 8);
+                nowDate = nowDate + "0" + Utils.ConvertIntegerToString(cal.get(Calendar.MONTH) + 2);
+            }
+            else {
+                nowDate = ChangeStringValue(nowDate, 4, 8);
+                nowDate = nowDate + Utils.ConvertIntegerToString(cal.get(Calendar.MONTH) + 2);
+            }
             // 마지막 주 마지막 일자 다음 처리
+            nowDate = nowDate + "01";
             int n = 1;
             for(int i = (week-1)%7; i<6; i++) {
-                // out.print("<td> </td>");
-                out.print("<td class='gray' onclick='MouseClickEvent(this)'>"+(n++)+"</td>");
+                if (ConvertStringToInteger(nowDate) >= startSODate && ConvertStringToInteger(nowDate) <= endSODate)
+                    out.print("<td class='gray, sleepover' onclick='MouseClickEvent(this)'>" +(n++)+ "</td>");
+                else {
+                    // out.print("<td> </td>");
+                    out.print("<td class='gray' onclick='MouseClickEvent(this)'>" + (n++) + "</td>");
+                }
+                nowDate = ChangeStringValue(nowDate, 6, 8);
+                nowDate = nowDate + "0" + ConvertIntegerToString(n);
             }
             out.print("</tr>");
         %>

@@ -46,15 +46,15 @@ public class DBConnect {
     }
 
     public static Map<String, Object> select(String id, String pw){
-        PreparedStatement ps=null;
-        ResultSet rs=null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         String sql = "select id, name, room_Number from hackathon.user where id = ? and password = ?";
         Map<String,Object> info= new HashMap();
 
         try {
             con = DriverManager.getConnection("jdbc:mysql://" + server + ":3306/" + "?useSSL=false", user_name, password);
             ps=con.prepareStatement(sql);
-            ps.setString(1,id);
+            ps.setString(1, id);
             ps.setString(2, pw);
             rs=ps.executeQuery();
             if(rs.next()){

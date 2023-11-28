@@ -30,7 +30,6 @@ public class MemoDAO {
             e.printStackTrace();
         }
 
-        System.out.println("memoList = " + memoList);
         return memoList;
     }
 
