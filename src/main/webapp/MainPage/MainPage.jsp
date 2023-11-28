@@ -20,7 +20,7 @@
     System.out.println(session.getAttribute("room_Number"));
 
     try{
-        name= session.getAttribute("name").toString();
+        name = session.getAttribute("name").toString();
         if(name==null){
             loginInfo="로그인이 필요해요!";
             isLogin="로그인";
@@ -51,6 +51,7 @@
                             <div class="schedule">
                                 <div class="soregister">
                                     <a href="./so-register.jsp" class="sor">외박신청</a>
+                                    <a href="./memo-register.jsp" class="sor">메모추가</a>
                                 </div>
                             </div>
                         </div>

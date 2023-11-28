@@ -16,18 +16,13 @@ public class login extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=utf-8");
 
-        String id=request.getParameter("id");
+        String id = request.getParameter("id");
         String password = request.getParameter("password");
         Map<String, Object> userInfo = select(id, password);
         if (userInfo.get("name")==null){

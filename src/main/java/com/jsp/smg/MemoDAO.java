@@ -54,11 +54,11 @@ public class MemoDAO {
     }
 
     // 메모를 추가하는 부분
-    public static void addMemo(Memo memo) {
-        String sql = "INSERT INTO calendarmemo (id, userid, memo_date, memo) VALUES (null, ?, ?, ?)";
+    public static void addMemo(Memo memo, String id) {
+        String sql = "INSERT INTO calendarmemo (id, user_id, memo_date, memo) VALUES (null, ?, ?, ?)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)){
-            stmt.setString(1, "201916011"); // 학번
+            stmt.setString(1, id); // 학번
             stmt.setString(2, memo.getDate()); // 날짜
             stmt.setString(3, memo.getMemo()); // 메모내용
             stmt.executeUpdate();
@@ -69,7 +69,7 @@ public class MemoDAO {
 
     //메모를 삭제하는 부분
     public static void removeMemo(String date) {
-        String sql = "delete from calendarmemo where memo_date = ? and userid = ?";
+        String sql = "delete from calendarmemo where memo_date = ? and user_id = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)){
             stmt.setString(1, date);

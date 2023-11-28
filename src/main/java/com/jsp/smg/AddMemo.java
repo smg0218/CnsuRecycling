@@ -21,13 +21,12 @@ public class AddMemo extends HttpServlet{
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=utf-8");
 
-        String date = request.getParameter("Start_date");
-        String NewMemo = request.getParameter("Memo");
+        String id = request.getSession().getAttribute("id").toString();
+        String date = request.getParameter("date");
+        String NewMemo = request.getParameter("memo");
 
-        request.getSession().setAttribute("date",date);
-        request.getSession().setAttribute("Reason",NewMemo);
 
-        MemoDAO.addMemo(new Memo(date, NewMemo));
+        MemoDAO.addMemo(new Memo(date, NewMemo), id);
 
         response.sendRedirect("../MainPage/MainPage.jsp");
     }
