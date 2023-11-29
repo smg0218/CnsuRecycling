@@ -76,7 +76,7 @@
                             </div>
                         </div>
                         <div class="college-meal">
-                            <div class="food" style="background-image: url('../img/food.jpg');"></div>
+                            <div class="food" style="background-image: url('../img/meal.PNG');"></div>
                         </div>
                     </div>
                 </div>
