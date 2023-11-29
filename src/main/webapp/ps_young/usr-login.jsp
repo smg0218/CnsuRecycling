@@ -60,11 +60,11 @@
             <form method="post" action="loginPro" class="px-4 py-3">
                 <div class="mb-3">
                     <label for="exampleDropdownFormEmail1" class="form-label">아이디</label>
-                    <input type="text" class="form-control" id="exampleDropdownFormEmail1" name="id">
+                    <input type="text" class="form-control" id="exampleDropdownFormEmail1" name="id" value="">
                 </div>
                 <div class="mb-3">
                     <label for="exampleDropdownFormPassword1" class="form-label">패스워드</label>
-                    <input type="password" class="form-control" id="exampleDropdownFormPassword1" name="password" >
+                    <input type="password" class="form-control" id="exampleDropdownFormPassword1" name="password" value="" >
                 </div>
                 <div class="mb-3">
                     <div class="form-check">

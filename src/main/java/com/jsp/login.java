@@ -32,10 +32,14 @@ public class login extends HttpServlet {
         Map<String, Object> userInfo = select(id, password);
         if (userInfo == null){
             PrintWriter out = response.getWriter();
-            out.println("<script language='javascript'>'");
+            out.println("<script language='javascript'>");
             out.println("alert('아이디 혹은 비밀번호를 잘못입력하셨습니다!')");
             out.println("</script>");
-            response.sendRedirect("../ps_young/usr-login.jsp");
+            out.println("<script language='javascript'>");
+            out.println("history.go(-1)");
+            out.println("</script>");
+
+//            response.sendRedirect("../ps_young/usr-login.jsp");
         }else{
             request.getSession().setAttribute("name",userInfo.get("name"));
             request.getSession().setAttribute("id",id);
